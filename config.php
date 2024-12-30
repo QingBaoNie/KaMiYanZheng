@@ -1,9 +1,9 @@
 <?php
 // 数据库配置文件
 $db_servername = "localhost";
-$db_username = "qpalzm12";
-$db_password = "Ar3H7RG2Kya56ecS";
-$db_name = "qpalzm12";
+$db_username = "Qing";
+$db_password = "Qing";
+$db_name = "Qing";
 
 // 创建 MySQLi 连接
 $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
