@@ -1,0 +1,269 @@
+
+        /* 通用样式 */
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff; /* 首页相同的背景颜色 */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffffff; /* 卡片白色背景 */
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 柔和阴影 */
+            position: relative;
+        }
+
+        /* 顶部按钮样式 */
+        .buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .buttons button, .buttons form button {
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .change-password {
+            background-color: #007bff;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .change-password:hover {
+            background-color: #0056b3;
+        }
+
+        .logout {
+            background-color: #f44336;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .logout:hover {
+            background-color: #d32f2f;
+        }
+
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* 表单样式 */
+        form {
+            margin-bottom: 20px;
+        }
+
+        form h2 {
+            font-size: 22px;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        form label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        form input[type="number"], 
+        form input[type="text"], 
+        form input[type="password"], 
+        form textarea, 
+        form input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+            background-color: #ffffff; /* 与首页背景相似 */
+        }
+
+        form button {
+            background-color: #28a745; /* 首页绿色按钮 */
+            color: white;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        form button:hover {
+            background-color: #218838;
+        }
+
+        /* 表格样式 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 12px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        td:first-child input {
+            cursor: pointer;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            padding: 8px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        /* 修改密码弹窗样式 */
+        #changePasswordModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            padding: 30px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        #modalOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        #changePasswordModal h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #444;
+            text-align: center;
+        }
+
+        #changePasswordModal form button {
+            margin-top: 15px;
+        }
+
+        #changePasswordModal form button#closeModal {
+            background-color: #6c757d;
+            margin-top: 10px;
+        }
+
+        #changePasswordModal form button#closeModal:hover {
+            background-color: #5a6268;
+        }
+
+        /* 实时预览样式 */
+        form textarea {
+            width: 100%; /* 拉满宽度 */
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical; /* 允许垂直调整大小 */
+            background-color: #ffffff; /* 白色背景 */
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 14px;
+            overflow: auto;
+        }
+
+        /* 折叠按钮样式 */
+        .toggle-preview {
+            background-color: #28a745; /* 首页绿色按钮 */
+            color: white;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .toggle-preview:hover {
+            background-color: #45a049;
+        }
+
+        /* 折叠区域样式 */
+        .preview-container {
+            margin-top: 10px;
+            display: none; /* 默认隐藏预览内容 */
+        }
+
+        /* 进度条样式 */
+        .progress-bar-container {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none; /* 初始隐藏 */
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            transition: width 0.4s ease;
+        }
+       

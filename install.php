@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $admin_username = trim($_POST['admin_username']);
     $admin_password = md5(trim($_POST['admin_password'])); // 使用 MD5 加密管理员密码
 
+
     // 生成数据库配置文件内容
     $config_content = "<?php\n";
     $config_content .= "// 数据库配置文件\n";
@@ -55,7 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 is_used BOOLEAN DEFAULT 0, -- 是否已使用
                 used_at DATETIME DEFAULT NULL, -- 卡密使用时间
                 user_ip VARCHAR(100) DEFAULT NULL, -- 使用者 IP
-                user_location VARCHAR(255) DEFAULT NULL -- 使用者地理位置
+                user_location VARCHAR(255) DEFAULT NULL, -- 使用者地理位置
+                encrypted_content TEXT DEFAULT NULL, -- 加密内容
+                encrypted_file VARCHAR(255) DEFAULT NULL -- 加密文件路径
             )
         ";
         $create_settings_table = "
@@ -73,31 +76,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             // 插入管理员账号
             $insert_admin = $conn->prepare("INSERT INTO admin (username, password) VALUES (?, ?)");
+            if (!$insert_admin) {
+                die("预处理语句失败: " . $conn->error);
+            }
             $insert_admin->bind_param("ss", $admin_username, $admin_password);
             $admin_result = $insert_admin->execute();
 
             // 插入默认加密内容
             $default_encrypted_content = "这是默认的加密内容，您可以在管理员后台更新此内容。";
             $insert_settings = $conn->prepare("INSERT INTO settings (key_name, value) VALUES ('encrypted_content', ?)");
+            if (!$insert_settings) {
+                die("预处理语句失败: " . $conn->error);
+            }
             $insert_settings->bind_param("s", $default_encrypted_content);
             $settings_result = $insert_settings->execute();
 
             if ($admin_result && $settings_result) {
+                // 创建上传目录
+                $uploadDir = __DIR__ . '/uploads/';
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0755, true);
+                }
+
                 // 创建安装锁文件
                 file_put_contents(__DIR__ . '/install.lock', '');
                 $successMessage = "安装成功！<a href='admin_login.php'>点击进入管理员登录</a>";
             } else {
                 $errorMessage = "初始化管理员账号或设置失败，请稍后再试。";
             }
+
+            // 关闭预处理语句
+            $insert_admin->close();
+            $insert_settings->close();
         } else {
             $errorMessage = "初始化数据库表失败：" . $conn->error;
         }
+
+        // 关闭数据库连接
+        $conn->close();
     } else {
-        $errorMessage = "配置文件写入失败，请检查文件权限。";
+        // 检查是否已经安装
+        if (file_exists(__DIR__ . '/install.lock')) {
+            die("系统已经安装，请删除 `install.lock` 文件后重试。");
+        }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>

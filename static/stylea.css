@@ -1,0 +1,119 @@
+ /* 通用样式 */
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f4eb; /* 浅灰背景 */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 容器样式 */
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff; /* 白色背景 */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 柔和的阴影 */
+            position: relative;
+        }
+
+        /* 标题样式 */
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            color: #333333; /* 深灰色标题 */
+            margin-bottom: 20px;
+        }
+
+        /* 输入框样式 */
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border: 1px solid #dddddd; /* 边框灰色 */
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #f9f9f9; /* 浅灰背景 */
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4CAF50; /* 绿色边框 */
+            outline: none;
+            background-color: #ffffff; /* 聚焦时白色背景 */
+        }
+
+        /* 按钮样式 */
+        button {
+            background-color: #4CAF50; /* 绿色按钮 */
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049; /* 鼠标悬停更深的绿色 */
+        }
+
+        /* 错误提示 */
+        .error-message {
+            color: #dc3545; /* 红色提示 */
+            font-size: 16px;
+            margin-top: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        /* 加密内容样式 */
+        .encrypted-content {
+            text-align: center;
+            padding: 20px;
+            background-color: #e8f5e9; /* 浅绿色背景 */
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid #c8e6c9; /* 绿色边框 */
+            color: #444; /* 深灰内容文字 */
+        }
+
+        /* 下载文件样式 */
+        .download-file {
+            text-align: center;
+            padding: 20px;
+            background-color: #e3f2fd; /* 浅蓝色背景 */
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid #90caf9; /* 蓝色边框 */
+            color: #333; /* 深灰内容文字 */
+        }
+
+        /* 倒计时样式 */
+        #countdown {
+            font-size: 16px;
+            color: #333333;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* 管理员链接样式 */
+        .admin-login-link {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #007bff; /* 蓝色链接 */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .admin-login-link:hover {
+            color: #0056b3; /* 深蓝色悬停效果 */
+            text-decoration: underline;
+        }
